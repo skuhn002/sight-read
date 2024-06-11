@@ -21,21 +21,11 @@
 
     const notes = [
     // A quarter-note C.
-    new StaveNote({ keys: ["c/4"], duration: "q" }),
-
-    // A quarter-note D.
-    new StaveNote({ keys: ["d/4"], duration: "q" }),
-
-    // A quarter-note rest. Note that the key (b/4) specifies the vertical
-    // position of the rest.
-    new StaveNote({ keys: ["b/4"], duration: "qr" }),
-
-    // A C-Major chord.
-    new StaveNote({ keys: ["c/4", "e/4", "g/4"], duration: "q" }),
+    new StaveNote({ keys: ["c/4"], duration: "q" })
     ];
 
     // Create a voice in 4/4 and add above notes
-    const voice = new Voice({ num_beats: 4, beat_value: 4 });
+    const voice = new Voice({ num_beats: 1, beat_value: 4 });
     voice.addTickables(notes);
 
     new Formatter().joinVoices([voice]).format([voice], 350);
@@ -44,3 +34,5 @@
     voice.draw(context, stave)
     stave.setContext(context).draw();
 </script>
+
+<%= testInterpolate1 %>
