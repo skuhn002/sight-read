@@ -14,21 +14,14 @@ app.use(express.static('public'));
 // Define a route to render the main file
 app.get('/', (req, res) => {
     //Stopped here trying to get the note to display by passing in the StaveNote object to interpolate it in main.ejs
-    const testInterpolate1 = [
-        // A quarter-note C.
-        new StaveNote({ keys: ["c/4"], duration: "q" })
-        ];
-    res.render('main', {testInterpolate1: testInterpolate1});
-
-    console.log(testInterpolate1);
+    res.redirect('/display-a-note');
     });
 
 
-// app.get('/display-a-note', (req, res) => {
-//     res.render('main', {    notes: [
-//         { keys: ["c/4"], duration: "q" }
-//       ]});
-// });
+app.get('/display-a-note', (req, res) => {
+    const note = '"c/4"';
+    res.render('main', {note: note});
+});
 
 // Start the server
 app.listen(port, () => {

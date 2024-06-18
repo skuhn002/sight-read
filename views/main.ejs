@@ -1,7 +1,14 @@
 <!-- <img src="img/music-staff.jpg" alt="Music Staff"> -->
 <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
 
-<div id="output"></div>
+<div style="display: flex; justify-content: center; align-items: center; font-size: 20vw">
+    <div id="output"></div>
+
+</div>
+<div style="display: flex; justify-content: center; align-items: center; font-size: 100px;">
+    <p style="text-align: center;"><%= note %></p>
+</div>
+
 <script>
     const { Renderer, Stave, StaveNote, Voice, Formatter } = Vex.Flow;
 
@@ -24,9 +31,14 @@
     new StaveNote({ keys: ["c/4"], duration: "q" })
     ];
 
+    const notes2 = [
+    // A quarter-note C.
+    new StaveNote({ keys: [<%- note %>], duration: "q" })
+    ];
+
     // Create a voice in 4/4 and add above notes
     const voice = new Voice({ num_beats: 1, beat_value: 4 });
-    voice.addTickables(notes);
+    voice.addTickables(notes2);
 
     new Formatter().joinVoices([voice]).format([voice], 350);
 
@@ -34,5 +46,3 @@
     voice.draw(context, stave)
     stave.setContext(context).draw();
 </script>
-
-<%= testInterpolate1 %>
