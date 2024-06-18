@@ -1,3 +1,4 @@
+const e = require('express');
 const express = require('express');
 const Vex = require('vexflow');
 const { Renderer, Stave, StaveNote, Voice, Formatter } = Vex.Flow;
@@ -19,8 +20,15 @@ app.get('/', (req, res) => {
 
 
 app.get('/display-a-note', (req, res) => {
-    const note = '"c/4"';
-    res.render('main', {note: note});
+    const notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    const octaves = [2, 3, 4, 5, 6];
+    const octave = octaves[Math.floor(Math.random() * octaves.length)];
+    const letterNote = notes[Math.floor(Math.random() * notes.length)];
+    const cleffs = ['treble', 'bass'];
+    const cleff = cleffs[Math.floor(Math.random() * cleffs.length)];
+
+    const note = '"' + letterNote + '/' + octave + '"';
+    res.render('main', {note: note, cleff: cleff});
 });
 
 // Start the server

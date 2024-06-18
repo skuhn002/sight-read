@@ -1,11 +1,14 @@
 <!-- <img src="img/music-staff.jpg" alt="Music Staff"> -->
 <script src="https://cdn.jsdelivr.net/npm/vexflow@4.2.2/build/cjs/vexflow.js"></script>
 
+<div>
+    <button onclick="location.reload()">Refresh</button>
+</div>
 <div style="display: flex; justify-content: center; align-items: center; font-size: 20vw">
     <div id="output"></div>
 
 </div>
-<div style="display: flex; justify-content: center; align-items: center; font-size: 100px;">
+<div style="display: flex; justify-content: center; align-items: center; font-size: 100px; padding-top: 100px;">
     <p style="text-align: center;"><%= note %></p>
 </div>
 
@@ -24,7 +27,7 @@
     const stave = new Stave(10, 40, 400);
 
     // Add a clef and time signature.
-    stave.addClef("treble").addTimeSignature("4/4");
+    stave.addClef("<%- cleff %>").addTimeSignature("4/4");
 
     const notes = [
     // A quarter-note C.
