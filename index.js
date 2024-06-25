@@ -15,20 +15,18 @@ app.use(express.static('public'));
 // Define a route to render the main file
 app.get('/', (req, res) => {
     //Stopped here trying to get the note to display by passing in the StaveNote object to interpolate it in main.ejs
-    res.redirect('/display-a-note');
+    res.redirect('/display-a-note/treble');
     });
 
 
-app.get('/display-a-note', (req, res) => {
+app.get('/display-a-note/treble', (req, res) => {
     const notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    const octaves = [2, 3, 4, 5, 6];
+    const octaves = [3, 4, 5];
     const octave = octaves[Math.floor(Math.random() * octaves.length)];
     const letterNote = notes[Math.floor(Math.random() * notes.length)];
-    const cleffs = ['treble', 'bass'];
-    const cleff = cleffs[Math.floor(Math.random() * cleffs.length)];
 
     const note = '"' + letterNote + '/' + octave + '"';
-    res.render('main', {note: note, cleff: cleff});
+    res.render('main', {note: note, cleff: 'treble'});
 });
 
 // Start the server
