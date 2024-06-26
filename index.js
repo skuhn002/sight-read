@@ -29,6 +29,16 @@ app.get('/display-a-note/treble', (req, res) => {
     res.render('main', {note: note, cleff: 'treble'});
 });
 
+app.get('/display-a-note/bass', (req, res) => {
+    const notes = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    const octaves = [3, 4, 5];
+    const octave = octaves[Math.floor(Math.random() * octaves.length)];
+    const letterNote = notes[Math.floor(Math.random() * notes.length)];
+
+    const note = '"' + letterNote + '/' + octave + '"';
+    res.render('main', {note: note, cleff: 'bass'});
+});
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
